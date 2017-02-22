@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	//"go.uber.org/zap"
+
 	gopivnet "github.com/pivotal-cf/go-pivnet"
 	"github.com/shinji62/generate-opsman-status/opsmanager"
 	"github.com/shinji62/generate-opsman-status/pivnet"
@@ -46,7 +46,6 @@ func main() {
 	fmt.Println("Users have been disconnected from OpsManager")
 
 	//Pivnet Client
-
 	config := gopivnet.ClientConfig{
 		Host:      gopivnet.DefaultHost,
 		Token:     *pivnetToken,
@@ -56,11 +55,4 @@ func main() {
 	client.CreateInfoPCF()
 	client.GenerateJson("./result.json")
 
-	//release, err := client.ReleasesForProductSlug("elastic-runtime")
-	// 	release, err := client.GetRelease("elastic-runtime", "1.8.27")
-	// 	//products, err := client.G
-	// 	//product, _ := client.Products.Get("elastic-runtime")
-	// 	fmt.Printf("Err: %v", err)
-	// 	//fmt.Printf("products: %v", products)
-	// 	fmt.Printf("releases: %v", release.ReleaseNotesURL)
 }
