@@ -17,7 +17,7 @@ var (
 	clientSecretOpsManager = kingpin.Flag("client-secret-opsman", "Client secret.").OverrideDefaultFromEnvar("OPSMAN_CLIENT_SECRET").Required().String()
 	pivnetToken            = kingpin.Flag("pivnet-api-token", "Pivnet API token").OverrideDefaultFromEnvar("PIVNET_TOKEN").Required().String()
 	skipSSLValidation      = kingpin.Flag("skip-ssl-validation", "Please don't").Default("false").OverrideDefaultFromEnvar("SKIP_SSL_VALIDATION").Bool()
-	pathProf               = kingpin.Flag("path-output", "Set the Path to Opsman file /path/opsman.json by default result").Default("result").OverrideDefaultFromEnvar("PATH_PROF").String()
+	pathProf               = kingpin.Flag("file-output", "Set the File output like ./path/opsman.json by default ./result.json").Default("result").OverrideDefaultFromEnvar("RESULT_FILE").String()
 )
 
 func main() {
@@ -53,6 +53,6 @@ func main() {
 	}
 	client := pivnet.NewPivnetClient(config, boshDiag)
 	client.CreateInfoPCF()
-	client.GenerateJson("./result.json")
+	client.GenerateJson(*pathProf)
 
 }
