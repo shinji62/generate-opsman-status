@@ -2,7 +2,7 @@
 set -e -u -x
 
 echo "Creating Generate OPSMAN USER UAA Client..."
-uaac target https://${OPSMAN_ENDPOINT}/uaa --skip-ssl-validation
+uaac target ${OPSMAN_ENDPOINT}/uaa --skip-ssl-validation
 uaac token owner get opsman ${OPSMAN_ADMIN_USER} -s '' -p ${OPSMAN_ADMIN_PASSWORD}
 uaac client add ${OPSMAN_CLIENT_ID} \
   --secret ${OPSMAN_CLIENT_SECRET} \
